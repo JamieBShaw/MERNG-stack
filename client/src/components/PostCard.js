@@ -22,7 +22,7 @@ const PostCard = props => {
 	};
 
 	const handleCommentOnPost = () => {
-		setComment(console.log("Comment on Post"));
+		setComment();
 	};
 
 	return (
@@ -49,12 +49,7 @@ const PostCard = props => {
 					<Icon name="heart" />
 					{likeCount}
 				</Button>
-				<Button
-					toggle
-					active={comment}
-					onClick={handleCommentOnPost}
-					color="blue"
-					basic>
+				<Button toggle active onClick={handleCommentOnPost} color="blue" basic>
 					<Icon name={commentCount >= 3 ? "comments" : "comment"} />
 					{commentCount}
 				</Button>
