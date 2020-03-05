@@ -5,7 +5,7 @@ import gql from "graphql-tag";
 
 import { AuthContext } from "../context/auth";
 
-import useForm from "../util/useForm";
+import useForm from "../util/hooks/useForm";
 
 const Login = props => {
 	const context = useContext(AuthContext);

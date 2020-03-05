@@ -4,7 +4,7 @@ import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { AuthContext } from "../context/auth";
 
-import useForm from "../util/useForm";
+import useForm from "../util/hooks/useForm";
 
 const Register = props => {
 	const context = useContext(AuthContext);
