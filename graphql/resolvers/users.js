@@ -10,7 +10,7 @@ const {
 
 module.exports = {
 	Mutation: {
-		async login(_, { username, password }) {
+		async login(_, { username, password }, { res }) {
 			const { valid, errors } = validateLoginInput(username, password);
 
 			if (!valid) {
@@ -29,37 +29,31 @@ module.exports = {
 				throw new UserInputError("Wrong credentials", { erros });
 			}
 
-			if (!valid) {
-				throw new UserInputError("Errors: ", { errors });
-			}
-
-			const token = generateToken(user);
+			const token = generateToken(user, "1h");
+			const refreshToken = generateToken(res, "7d");
 
 			return {
 				...user._doc,
 				id: user._id,
-				token
+				token,
+				refreshToken
 			};
 		},
 		async register(
 			_,
 			{ registerInput: { username, email, password, confirmPassword } }
 		) {
-			// TODO: validate user data
-
+			// Validate user data
 			const { valid, errors } = validateRegisterInput(
 				username,
 				email,
 				password,
 				confirmPassword
 			);
-
 			if (!valid) {
-				throw new UserInputError("Errors: ", { errors });
+				throw new UserInputError("Errors", { errors });
 			}
-
-			// TODO: Mkae sure users doesn't already exist
-
+			// TODO: Make sure user doesnt already exist
 			const user = await User.findOne({ username });
 			if (user) {
 				throw new UserInputError("Username is taken", {
@@ -68,19 +62,27 @@ module.exports = {
 					}
 				});
 			}
-
-			// TODO: hash password and create auth token:: DONE
+			// hash password and create an auth token
 			password = await bcrypt.hash(password, 12);
 
 			const newUser = new User({
 				email,
 				username,
 				password,
-				createdAt: new Date().toUTCString()
+				createdAt: new Date().toISOString()
 			});
+
 			const res = await newUser.save();
 
-			const token = generateToken(res);
+			const token = generateToken(res, "1h");
+			const refreshToken = generateToken(res, "7d");
+
+			return {
+				...res._doc,
+				id: res._id,
+				token,
+				refreshToken
+			};
 		}
 	}
 };

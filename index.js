@@ -10,7 +10,7 @@ const pubsub = new PubSub();
 const server = new ApolloServer({
 	typeDefs,
 	resolvers,
-	context: ({ req }) => ({ req, pubsub })
+	context: ({ req, res }) => ({ req, res })
 });
 
 mongoose
