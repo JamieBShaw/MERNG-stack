@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Card, Image, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
+import { AuthContext } from "../context/auth";
+
+import DeleteButton from "./DeleteButton";
+import LikeButton from "./LikeButton";
+// co
+
 const PostCard = props => {
-	const [like, setLike] = useState(false);
-	const [comment, setComment] = useState("");
+	const { user } = useContext(AuthContext);
+
 	// Destructuring props and post objects to get data points of our post
 	const {
 		body,
@@ -16,14 +22,6 @@ const PostCard = props => {
 		commentCount,
 		likes
 	} = props.post;
-
-	const handleLikeClick = () => {
-		setLike(!like);
-	};
-
-	const handleCommentOnPost = () => {
-		setComment();
-	};
 
 	return (
 		<Card fluid>
@@ -40,19 +38,12 @@ const PostCard = props => {
 				<Card.Description>{body}</Card.Description>
 			</Card.Content>
 			<Card.Content extra>
-				<Button
-					toggle
-					active={like}
-					onClick={handleLikeClick}
-					color="teal"
-					basic>
-					<Icon name="heart" />
-					{likeCount}
-				</Button>
-				<Button toggle active onClick={handleCommentOnPost} color="blue" basic>
+				<LikeButton user={user} post={{ id, likeCount, likes }} />
+				<Button toggle active as={Link} to={`/posts/${id}`} color="blue" basic>
 					<Icon name={commentCount >= 3 ? "comments" : "comment"} />
 					{commentCount}
 				</Button>
+				{user && user.username === username && <DeleteButton postId={id} />}
 			</Card.Content>
 		</Card>
 	);

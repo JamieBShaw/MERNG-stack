@@ -7,7 +7,7 @@ const initalState = {
 	user: null
 };
 
-if (localStorage.getItem("token")) {
+if (localStorage.getItem("token") || localStorage.get("refreshToken")) {
 	const decodedToken = jwtDecoder(localStorage.getItem("token"));
 
 	if (decodedToken.exp * 1000 < Date.now()) {
@@ -45,6 +45,7 @@ const AuthProvider = props => {
 
 	const login = userData => {
 		localStorage.setItem("token", userData.token);
+
 		dispatch({
 			type: actionTypes.LOGIN,
 			payload: userData

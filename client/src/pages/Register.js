@@ -112,6 +112,7 @@ const REGISTER_USER = gql`
 			username
 			createdAt
 			token
+			refreshToken
 		}
 	}
 `;
