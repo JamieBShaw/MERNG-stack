@@ -20,10 +20,12 @@ const errorLink = onError(({ graphQLErrors }) => {
 
 const authLink = setContext(() => {
 	const token = localStorage.getItem("token");
+	const refreshToken = localStorage.getItem("refreshToken");
 
 	return {
 		headers: {
-			Authorization: token ? `Bearer ${token}` : ""
+			authorizationToken: token ? `Bearer ${token}` : "",
+			authorizationRefreshToken: refreshToken ? `Bearer ${refreshToken}` : ""
 		}
 	};
 });

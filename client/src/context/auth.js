@@ -7,7 +7,7 @@ const initalState = {
 	user: null
 };
 
-if (localStorage.getItem("token") || localStorage.getItem("refreshToken")) {
+if (localStorage.getItem("token")) {
 	const decodedToken = jwtDecoder(localStorage.getItem("token"));
 
 	if (decodedToken.exp * 1000 < Date.now()) {
@@ -56,6 +56,7 @@ const AuthProvider = props => {
 	const logout = () => {
 		localStorage.removeItem("token");
 		localStorage.removeItem("refreshToken");
+
 		dispatch({
 			type: actionTypes.LOGOUT
 		});
