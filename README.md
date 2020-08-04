@@ -1,6 +1,6 @@
 # MERNG-stack
 
-Code/ Idea based on tutorial/ walkthrough of [Classed](https://www.youtube.com/channel/UC2-slOJImuSc20Drbf88qvg)
+Code/ Idea based on tutorial/ walkthrough by [Classed](https://www.youtube.com/channel/UC2-slOJImuSc20Drbf88qvg)
 Direct link to server [tutorial](https://www.youtube.com/watch?v=YBydg_Ui02Q&list=PLMhAeHCz8S3_CTiWMQhL6YxX7vZ7z84Zo&index=1) and direct link to
 Client [tutorial](youtube.com/watch?v=_DqPiZPKkgY&list=PLMhAeHCz8S3_pgb-j51QnCEhXNj5oyl8n)
 
