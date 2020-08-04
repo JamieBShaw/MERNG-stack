@@ -6,7 +6,7 @@ Client [tutorial](youtube.com/watch?v=_DqPiZPKkgY&list=PLMhAeHCz8S3_pgb-j51QnCEh
 
 ----------------------------------------------------
 
-##T ools/ Libraries used:
+## Tools/ Libraries used:
 
 **Database**:
 *MongoDB (MongoDBAtlas)
@@ -18,8 +18,8 @@ Client [tutorial](youtube.com/watch?v=_DqPiZPKkgY&list=PLMhAeHCz8S3_pgb-j51QnCEh
 *React (create-react-app)
 *Semantic-ui
 
-Recommended to install Apollo Client Dev Tools for web browser:
-https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm#:~:text=%20Apollo%20Client%20Developer%20Tools%20%201%20Staying,Easily%20create%20mathematical%20equations%2C%20formulas%20and...%20More%20
+Recommended to install [Apollo Client Dev Tools](https://chrome.google.com/webstore/detail/apollo-client-developer-t/jdkknkkbebbapilgoeccciglkfbmbnfm#:~:text=%20Apollo%20Client%20Developer%20Tools%20%201%20Staying,Easily%20create%20mathematical%20equations%2C%20formulas%20and...%20More%20) for web browser:
+
 
 ---------------------------------------------------
 
